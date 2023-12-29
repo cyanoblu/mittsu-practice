@@ -16,6 +16,7 @@ export default defineComponent({
     onMounted(() => {
       container = document.querySelector('#scene-container')
       world = new World(container)
+      world.render()
     })
 
     function buttonHandler() {
