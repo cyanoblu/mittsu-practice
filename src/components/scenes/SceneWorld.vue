@@ -1,20 +1,41 @@
 <template>
-  <div>ok</div>
+  <button class="render-btn" @click="buttonHandler()">Render</button>
+  <div id="scene-container"></div>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted } from 'vue'
-import { World } from '../world/World'
+import { defineComponent, onMounted, onBeforeUpdate, ref } from 'vue'
+import { World } from '@/world/World'
 
 export default defineComponent({
   setup() {
+    const render = ref(false)
+    let container: HTMLElement | null
+    let world: any
+
     onMounted(() => {
-      const container = document.querySelector('#scene-container')
-      const world = new World(container)
+      container = document.querySelector('#scene-container')
+      world = new World(container)
     })
 
-    World.render()
-    return {}
+    function buttonHandler() {
+      console.log('render')
+      if (render.value === false) {
+        render.value = true
+        world.render()
+      } else {
+        render.value = false
+        world.dispose
+      }
+    }
+    return { buttonHandler, render }
   }
 })
 </script>
+
+<style scoped>
+#scene-container {
+  width: 640px;
+  height: 480px;
+}
+</style>
