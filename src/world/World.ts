@@ -5,6 +5,7 @@ import { createCube } from './components/Cube'
 import { createCapsule } from './components/Capsule'
 import { createRenderer } from './systems/Renderer'
 import { Resizer } from './systems/Resizer'
+import { MathUtils, Vector3 } from 'three'
 
 let camera: any
 let light: any
@@ -19,11 +20,17 @@ class World {
     renderer = createRenderer()
     container.append(renderer.domElement)
 
-    //const cube = createCube()
+    const cube = createCube()
     const capsule = createCapsule()
 
-    //scene.add(cube)
-    scene.add(capsule, light)
+    scene.add(cube)
+    cube.add(capsule, light)
+
+    capsule.position.x = 3
+
+    cube.rotation.y = MathUtils.degToRad(45)
+
+    cube.scale.set(0.5, 0.5, 0.5)
 
     const resizer = new Resizer(container, camera, renderer)
   }

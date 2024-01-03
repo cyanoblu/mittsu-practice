@@ -4,7 +4,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, onBeforeUpdate, ref } from 'vue'
+import { defineComponent, onMounted, ref } from 'vue'
 import { World } from '@/world/World'
 
 export default defineComponent({
