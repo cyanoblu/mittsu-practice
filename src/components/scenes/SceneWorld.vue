@@ -11,7 +11,7 @@ export default defineComponent({
   setup() {
     const render = ref(false)
     let container: HTMLElement | null
-    let world: any
+    let world: World
 
     onMounted(() => {
       container = document.querySelector('#scene-container')
@@ -36,7 +36,7 @@ export default defineComponent({
 
 <style scoped>
 #scene-container {
-  width: 640px;
-  height: 480px;
+  width: 800px;
+  height: 600px;
 }
 </style>
