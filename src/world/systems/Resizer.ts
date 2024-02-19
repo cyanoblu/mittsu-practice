@@ -14,7 +14,7 @@ class Resizer {
       this.onResize
     })
   }
-  onresize() {}
+  onResize() {}
 }
 
 export { Resizer }

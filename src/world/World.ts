@@ -1,5 +1,5 @@
 import { createCamera } from './components/Camera'
-import { createLights } from './components/Lights'
+import { createBasicLight } from './components/Lights'
 import { createScene } from './components/Scene'
 import { createCube } from './components/Cube'
 import { createCapsule } from './components/Capsule'
@@ -19,7 +19,7 @@ class World {
 
   constructor(container: any) {
     camera = createCamera()
-    light = createLights()
+    light = createBasicLight()
     scene = createScene()
     renderer = createRenderer()
     container.append(renderer.domElement)
@@ -31,14 +31,16 @@ class World {
     scene.add(light.target)
     cube.add(capsule)
 
+    camera.position.set(1,1,10)
+
     capsule.position.x = 3
 
     cube.rotation.y = MathUtils.degToRad(45)
 
-    //cube.scale.set(0.5, 0.5, 0.5)
+    cube.scale.set(0.5, 0.5, 0.5)
     cube.position.z = 5
 
-    light.position.set(0, 5, 0)
+    light.position.set(0, 4, 0)
 
     light.target.position.set(0, 2, 0)
 
